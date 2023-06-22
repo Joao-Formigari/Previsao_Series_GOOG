@@ -20,7 +20,7 @@ jobs:
           sudo apt install libcurl4-openssl-dev
           R -e 'install.packages("yfR")'
           R -e 'install.packages("readr")'
-          R -e 'install.packages("ugarch")'
+          R -e 'install.packages("rugarch")'
           
       # Run Rscript    
       - name: Scraping
