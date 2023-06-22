@@ -3,6 +3,8 @@ name: Webscraping
 on:
   schedule:
     - cron: "10 * * * *" # Every hour
+    
+git update-index --chmod=+x hello.r
 
 jobs:
   scrape:
