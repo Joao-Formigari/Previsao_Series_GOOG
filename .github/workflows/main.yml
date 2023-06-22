@@ -2,10 +2,8 @@ name: Webscraping
 
 on:
   schedule:
-    - cron: "36 * * * *" # Every hour
+    - cron: "55 * * * *" # Every hour
     
-git update-index --chmod=+x hello.r
-
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -17,11 +15,11 @@ jobs:
       
       
        #Set-up R
-      - name: Install Packages
-        run: |
-          sudo apt install libcurl4-openssl-dev
-          R -e 'install.packages("dplyr")'
-          R -e 'install.packages("academictwitteR")'
+      #- name: Install Packages
+        #run: |
+          #sudo apt install libcurl4-openssl-dev
+          #R -e 'install.packages("dplyr")'
+          #R -e 'install.packages("academictwitteR")'
           
       # Run Rscript    
       - name: Scraping
