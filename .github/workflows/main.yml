@@ -2,7 +2,7 @@ name: Webscraping
 
 on:
   schedule:
-    - cron: "30 * * * *" # Every hour
+    - cron: "57 * * * *" # Every hour
     
 jobs:
   scrape:
@@ -24,7 +24,34 @@ jobs:
       # Run Rscript    
       - name: Scraping
         run: Rscript R/hello.R
-        
+#on:
+  #schedule:
+    #- cron: '0 8 27-30,1-3 6-7 *'  # Executar todos os dias à meia-noite UTC
+
+      #- name: Install packages
+        #run: |
+          #Rscript -e 'install.packages("tidyverse")'
+          #Rscript -e 'install.packages("forecast")'
+
+      #- name: Run time series forecast
+        #run: Rscript forecast_script.R
+
+      #- name: Save forecast to CSV
+        #run: |
+          #mv forecast_results.csv ${{ github.workspace }}/forecast_results.csv
+
+      - name: Send email
+        uses: dawidd6/action-send-email@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL }}
+          password: ${{ secrets.SENHA }}
+          to: joaopedrocf26@gmail.com
+          subject: Time Series Forecast
+          body: Please find attached the time series forecast for the next day.
+          #attachments: ${{ github.workspace }}/forecast_results.csv
+
       # Add new files in folders and commit
       #- name: Commit
         #run: |
