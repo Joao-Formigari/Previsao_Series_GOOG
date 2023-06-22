@@ -2,11 +2,11 @@ name: Webscraping
 
 on:
   schedule:
-    - cron: "50 * * * *" # Every hour
+    - cron: "04 * * * *" # Every hour
     
 jobs:
   scrape:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     
     # Load Repo and Install R
     steps:
@@ -17,7 +17,7 @@ jobs:
        #Set-up R
       - name: Install Packages
         run: |
-          #sudo apt install libcurl4-openssl-dev
+          sudo apt install libcurl4-openssl-dev
           R -e 'install.packages("yfR")'
           R -e 'install.packages("readr")'
           R -e 'install.packages("ugarch")'
