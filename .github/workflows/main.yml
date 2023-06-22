@@ -47,6 +47,7 @@ jobs:
           server_port: 587
           username: ${{ secrets.EMAIL }}
           password: ${{ secrets.SENHA }}
+          from: joaopedrocf26@gmail.com
           to: joaopedrocf26@gmail.com
           subject: Time Series Forecast
           body: Please find attached the time series forecast for the next day.
