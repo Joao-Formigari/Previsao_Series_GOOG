@@ -2,7 +2,7 @@ name: Webscraping
 
 on:
   schedule:
-    - cron: "41 * * * *" # Every hour
+    - cron: "04 * * * *" # Every hour
     
 jobs:
   scrape:
@@ -21,7 +21,8 @@ jobs:
           R -e 'install.packages("yfR")'
           R -e 'install.packages("readr")'
           R -e 'install.packages("rugarch")'
-          
+          R -e 'install.packages("scales")'
+
       # Run Rscript    
       - name: Scraping
         run: Rscript R/hello.R
