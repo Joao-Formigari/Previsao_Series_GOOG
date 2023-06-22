@@ -2,7 +2,7 @@ name: Webscraping
 
 on:
   schedule:
-    - cron: "35 * * * *" # Every hour
+    - cron: "37 * * * *" # Every hour
     
 jobs:
   scrape:
@@ -40,8 +40,8 @@ jobs:
         #run: |
           #mv forecast_results.csv ${{ github.workspace }}/forecast_results.csv
 
-      - name: Send email
-        uses: dawidd6/action-send-email@v3
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 587
