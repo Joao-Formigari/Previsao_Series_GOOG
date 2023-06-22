@@ -2,7 +2,7 @@ name: Webscraping
 
 on:
   schedule:
-    - cron: "34 * * * *" # Every hour
+    - cron: "57 * * * *" # Every hour
     
 jobs:
   scrape:
@@ -18,9 +18,9 @@ jobs:
       - name: Install Packages
         run: |
           #sudo apt install libcurl4-openssl-dev
-          #R -e 'install.packages("yfR")'
-          #R -e 'install.packages("readr")'
-          #R -e 'install.packages("ugarch")'
+          R -e 'install.packages("yfR")'
+          R -e 'install.packages("readr")'
+          R -e 'install.packages("ugarch")'
           
       # Run Rscript    
       - name: Scraping
