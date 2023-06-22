@@ -41,7 +41,7 @@ jobs:
           #mv forecast_results.csv ${{ github.workspace }}/forecast_results.csv
 
       - name: Send email
-        uses: dawidd6/action-send-email@v2
+        uses: dawidd6/action-send-email@v3
         with:
           server_address: smtp.gmail.com
           server_port: 587
