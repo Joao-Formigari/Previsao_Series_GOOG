@@ -23,7 +23,7 @@ jobs:
           
       # Run Rscript    
       - name: Scraping
-        run: R/hello.R
+        run: Rscript R/hello.R
         
       # Add new files in folders and commit
       #- name: Commit
