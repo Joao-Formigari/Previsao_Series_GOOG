@@ -1,6 +1,7 @@
 library(yfR)
 library(readr)
 library(rugarch)
+library(scales)
 
 nome_acao <- "GOOG"   # Codigo no Yahoo Finance
 data_ini  <- "2010-01-01" # Data de inicio
