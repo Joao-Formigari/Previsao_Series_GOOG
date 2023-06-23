@@ -17,7 +17,7 @@ fit_01 <- ugarchfit(spec, fechamento, solver = 'hybrid')
   
 previsao <- ugarchforecast(fit_01, fechamento, n.ahead = 1)
 
-previsao_antes <- read.csv("https://raw.githubusercontent.com/Joao-Formigari/Teste/master/data/teste.csv")
+previsao_antes <- read.csv("https://raw.githubusercontent.com/Joao-Formigari/Teste/master/data/previsao.csv")
 
 previsao_antes[length(previsao_antes),1] <- previsao@forecast[["seriesFor"]]
 previsao_antes[length(previsao_antes),2] <- previsao@forecast[["sigmaFor"]]
