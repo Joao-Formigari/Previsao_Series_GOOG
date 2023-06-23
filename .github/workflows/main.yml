@@ -67,6 +67,6 @@ jobs:
           to: j236144@dac.unicamp.br
           subject: Trabalho de Séries
           body: Se você está recebendo isso significa que GANHAMO PORRAAAA
-          #attachments: ${{ github.workspace }}/forecast_results.csv
+          attachments: ${{ github.workspace }}/data/previsao.csv
 
 
