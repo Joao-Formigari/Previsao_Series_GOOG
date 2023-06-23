@@ -2,7 +2,7 @@ name: Webscraping
 
 on:
   schedule:
-    - cron: "47 * * * *" # Every hour
+    - cron: "16 * * * *" # Every hour
     
 jobs:
   scrape:
@@ -11,6 +11,8 @@ jobs:
     # Load Repo and Install R
     steps:
       - uses: actions/checkout@master
+        with:
+          token: ${{ secrets.GH_TOKEN }}
       - uses: r-lib/actions/setup-r@v2 
       
       
