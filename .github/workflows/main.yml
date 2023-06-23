@@ -2,7 +2,7 @@ name: Webscraping
 
 on:
   schedule:
-    - cron: "36 * * * *" # Every hour
+    - cron: "28 * * * *" # Every hour
     
 jobs:
   scrape:
