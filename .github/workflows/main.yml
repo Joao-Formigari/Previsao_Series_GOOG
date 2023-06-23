@@ -2,7 +2,7 @@ name: Webscraping
 
 on:
   schedule:
-    - cron: "07 * * * *" # Every hour
+    - cron: "51 * * * *" # Every hour
     
 jobs:
   scrape:
@@ -67,6 +67,6 @@ jobs:
           to: j236144@dac.unicamp.br
           subject: Trabalho de Séries
           body: Se você está recebendo isso significa que GANHAMO PORRAAAA
-          attachments: ${{ github.workspace }}/data/2023-06-23previsao.csv
+          attachments: ${{ github.workspace }}/data/previsao.csv
 
 
