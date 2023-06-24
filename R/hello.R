@@ -19,7 +19,7 @@ fechamento[nrow(fechamento)+1,] <- previsao_antes[nrow(previsao_antes),c(1,3)]
 
 fit_01 <- ugarchfit(spec, fechamento[-3391,], solver = 'hybrid')
 
-previsao <- ugarchforecast(fit_01, fechamento, n.ahead = 1)
+previsao <- ugarchforecast(fit_01, fechamento[-3391], n.ahead = 1)
 
 previsao_antes[,3]<-as.Date(previsao_antes[,3])
 previsao_antes[nrow(previsao_antes)+1,1] <- previsao@forecast[["seriesFor"]]
