@@ -1,9 +1,10 @@
 name: Webscraping
 
 on:
-  schedule:
-    - cron: "30 * * * *" # Every hour
-    
+#  schedule:
+ #   - cron: "30 * * * *" # Every hour
+    workflow_dispatch
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
