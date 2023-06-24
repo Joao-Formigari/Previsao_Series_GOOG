@@ -19,8 +19,8 @@ previsao <- ugarchforecast(fit_01, fechamento, n.ahead = 1)
 
 previsao_antes <- read.csv("https://raw.githubusercontent.com/Joao-Formigari/Teste/master/data/previsao.csv")
 
-previsao_antes[length(previsao_antes),1] <- previsao@forecast[["seriesFor"]]
-previsao_antes[length(previsao_antes),2] <- previsao@forecast[["sigmaFor"]]
+previsao_antes[length(previsao_antes)+1,1] <- previsao@forecast[["seriesFor"]]
+previsao_antes[length(previsao_antes)+1,2] <- previsao@forecast[["sigmaFor"]]
 
 write_csv(previsao_antes,paste0('data/','previsao','.csv'))    
 
