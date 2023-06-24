@@ -64,7 +64,7 @@ jobs:
           server_port: 587
           username: ${{ secrets.EMAIL }}
           password: ${{ secrets.SENHA }}
-          from: joaopedrocf26@gmail.com
+          from: João Formigari - 236144
           to: j236144@dac.unicamp.br
           subject: Trabalho de Séries
           body: Se você está recebendo isso significa que GANHAMO PORRAAAA
