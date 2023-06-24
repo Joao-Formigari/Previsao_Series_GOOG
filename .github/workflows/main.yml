@@ -10,7 +10,7 @@ on:
 
 jobs:
   scrape:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     
     # Load Repo and Install R
     steps:
