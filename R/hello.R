@@ -21,7 +21,7 @@ if (nrow(previsao_antes) > 0){
   fechamento[,3] <- as.Date(fechamento$data)
   fit_01 <- ugarchfit(spec, fechamento$fechamento[-3391], solver = 'hybrid')
   
-  previsao <- ugarchforecast(fit_01, fechamento[-3391],
+  previsao <- ugarchforecast(fit_01, fechamento$fechamento[-3391],
                              n.ahead = nrow(previsao_antes))[nrow(previsao_antes),]
   previsao_antes[,3]<-as.Date(previsao_antes[,3])
   previsao_antes[nrow(previsao_antes)+1,1] <- previsao@forecast[["seriesFor"]]
