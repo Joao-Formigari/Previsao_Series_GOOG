@@ -17,7 +17,8 @@ spec <- ugarchspec(mean.model = list(armaOrder = c(2, 1), include.mean = FALSE),
 previsao_antes <- read.csv("https://raw.githubusercontent.com/Joao-Formigari/Teste/master/data/previsao.csv")
 
 if (nrow(previsao_antes) > 0){
-  fechamento[nrow(fechamento)+1,] <- previsao_antes[nrow(previsao_antes),c(1,3)]
+  fechamento[nrow(fechamento)+1,1] <- previsao_antes[nrow(previsao_antes),1]
+  fechamento[nrow(fechamento)+1,2] <- as.Date(previsao_antes[nrow(previsao_antes),3])
   fechamento[,3] <- as.Date(fechamento$data)
   fit_01 <- ugarchfit(spec, fechamento$fechamento[-3391], solver = 'hybrid')
   
