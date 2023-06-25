@@ -8,6 +8,7 @@ data_ini  <- "2010-01-01" # Data de inicio
 data_fim <- "2023-06-23"
 precos <- yf_get(tickers = nome_acao, first_date = data_ini, last_date = data_fim)
 fechamento <- as.data.frame(list(precos$price_adjusted, precos$ref_date))
+colnames(fechamento) <- c("fechamento","data")
 
 spec <- ugarchspec(mean.model = list(armaOrder = c(2, 1), include.mean = FALSE),
                      variance.model = list(model = 'sGARCH', garchOrder = c(1, 1)),
