@@ -15,17 +15,28 @@ spec <- ugarchspec(mean.model = list(armaOrder = c(2, 1), include.mean = FALSE),
   
 previsao_antes <- read.csv("https://raw.githubusercontent.com/Joao-Formigari/Teste/master/data/previsao.csv")
 
-fechamento[nrow(fechamento)+1,] <- previsao_antes[nrow(previsao_antes),c(1,3)]
+if (nrow(previsao_antes) > 0){
+  fechamento[nrow(fechamento)+1,] <- previsao_antes[nrow(previsao_antes),c(1,3)]
+  fechamento[,3] <- as.Date(fechamento$data)
+  fit_01 <- ugarchfit(spec, fechamento$fechamento[-3391], solver = 'hybrid')
+  
+  previsao <- ugarchforecast(fit_01, fechamento[-3391],
+                             n.ahead = nrow(previsao_antes))[nrow(previsao_antes),]
+  previsao_antes[,3]<-as.Date(previsao_antes[,3])
+  previsao_antes[nrow(previsao_antes)+1,1] <- previsao@forecast[["seriesFor"]]
+  previsao_antes[nrow(previsao_antes),2] <- previsao@forecast[["sigmaFor"]]
+  previsao_antes[nrow(previsao_antes),3] <- fechamento$data[nrow(fechamento)]+nrow(previsao_antes)-1
+}
 
-fit_01 <- ugarchfit(spec, fechamento$fechamento, solver = 'hybrid')
+if (nrow(previsao_antes) == 0){
+  fit_01 <- ugarchfit(spec, fechamento$fechamento, solver = 'hybrid')
+  
+  previsao <- ugarchforecast(fit_01, fechamento,
+                             n.ahead = 1)
+  previsao_antes[,3]<-as.Date(previsao_antes[,3])
+  previsao_antes[nrow(previsao_antes)+1,1] <- previsao@forecast[["seriesFor"]]
+  previsao_antes[nrow(previsao_antes),2] <- previsao@forecast[["sigmaFor"]]
+  previsao_antes[nrow(previsao_antes),3] <- fechamento$data[nrow(fechamento)]+1
+}
 
-previsao <- ugarchforecast(fit_01, fechamento$fechamento,
-                           n.ahead = nrow(previsao_antes))[nrow(previsao_antes),]
-
-
-previsao_antes[,3]<-as.Date(previsao_antes[,3])
-previsao_antes[nrow(previsao_antes)+1,1] <- previsao@forecast[["seriesFor"]]
-previsao_antes[nrow(previsao_antes),2] <- previsao@forecast[["sigmaFor"]]
-previsao_antes[nrow(previsao_antes),3] <- as.Date(previsao@model$modeldata$index[length(previsao@model$modeldata$index)])+nrow(previsao_antes)-1
-
-write_csv(previsao_antes,paste0('data/','previsao','.csv'))  
+write_csv(previsao_antes,paste0('data/','previsao','.csv'))   
