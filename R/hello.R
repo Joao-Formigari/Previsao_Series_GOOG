@@ -7,7 +7,7 @@ nome_acao <- "GOOG"   # Codigo no Yahoo Finance
 data_ini  <- "2010-01-01" # Data de inicio
 data_fim <- Sys.Date()
 precos <- yf_get(tickers = nome_acao, first_date = data_ini, last_date = data_fim)
-retorno <- as.data.frame(list(precos$ret_adjusted_prices[-1], precos$ref_date))
+retorno <- as.data.frame(list(precos$ret_adjusted_prices[-1], precos$ref_date[-1))
 colnames(retorno) <- c("retorno","data")
 
 spec <- ugarchspec(mean.model = list(armaOrder = c(2, 1), include.mean = FALSE),
