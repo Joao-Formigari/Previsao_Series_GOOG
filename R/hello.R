@@ -18,7 +18,7 @@ previsao_antes <- read.csv("https://raw.githubusercontent.com/Joao-Formigari/Tes
 
 if (nrow(previsao_antes) > 0){
   fechamento[nrow(fechamento)+1,1] <- previsao_antes[nrow(previsao_antes),1]
-  fechamento[nrow(fechamento)+1,2] <- as.Date(previsao_antes[nrow(previsao_antes),3])
+  fechamento[nrow(fechamento),2] <- as.Date(previsao_antes[nrow(previsao_antes),3])
   fechamento[,3] <- as.Date(fechamento$data)
   fit_01 <- ugarchfit(spec, fechamento$fechamento[-3391], solver = 'hybrid')
   
