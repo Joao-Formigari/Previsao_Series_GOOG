@@ -27,7 +27,7 @@ if (nrow(previsao_antes) > 0){
   previsao_antes[,3]<-as.Date(previsao_antes[,3])
   previsao_antes[nrow(previsao_antes)+1,1] <- previsao@forecast[["seriesFor"]][nrow(previsao_antes)]
   previsao_antes[nrow(previsao_antes),2] <- previsao@forecast[["sigmaFor"]][nrow(previsao_antes)]
-  previsao_antes[nrow(previsao_antes),3] <- fechamento$data[nrow(fechamento)]+nrow(previsao_antes)-1
+  previsao_antes[nrow(previsao_antes),3] <- fechamento$data[nrow(fechamento)]+1
 }
 
 if (nrow(previsao_antes) == 0){
