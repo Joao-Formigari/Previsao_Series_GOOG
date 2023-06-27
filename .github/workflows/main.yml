@@ -31,7 +31,7 @@ jobs:
 
       # Run Rscript    
       - name: Scraping
-        run: Rscript R/hello.R
+        run: Rscript R/previsao.R
 
       # Add new files in folders and commit
       - name: Commit files
