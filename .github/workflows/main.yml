@@ -1,13 +1,10 @@
 name: Previsão de fechamento
 
 on:
- # schedule:
-   # - cron: "0,30 * * * *" # Every hour
-    workflow_dispatch
-#on:
- #schedule:
-    #- cron: '0 8 27-30,1-3 6-7 *'  # Executar todos os dias à meia-noite UTC
-
+  schedule:
+    - cron: "0 18 27,28,29,30,3,4,5 * *" # Every hour
+    #workflow_dispatch
+    
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -52,8 +49,8 @@ jobs:
           server_port: 587
           username: ${{ secrets.EMAIL }}
           password: ${{ secrets.SENHA }}
-          from: João Formigari - 236144
-          to: j236144@dac.unicamp.br
+          from: João Formigari - RA 236144
+          to: ctrucios@unicamp.br
           subject: (ME607) - Trabalho Final - Previsão de fechamento das Ações GOOG
           body: Segue em anexo a previsão de fechamento para as ações da GOOG, ação listada na NASDAQ e representa a empresa Alphabet. Membros responsáveis pela previsão - Isabella Nascimento Peres da Silva (RA 238015), João Pedro de Campos Formigari (RA 236144) e Pedro Luis Rebollo (RA 217460).
           attachments: ${{ github.workspace }}/data/previsao.csv
