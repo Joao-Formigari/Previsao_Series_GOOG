@@ -2,7 +2,7 @@ name: Previsão de fechamento
 
 on:
   schedule:
-    - cron: "0,20,40 * * * *" # Every hour
+    - cron: "0,30 * * * *" # Every hour
     #workflow_dispatch
 #on:
  #schedule:
