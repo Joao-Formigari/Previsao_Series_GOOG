@@ -10,11 +10,9 @@ precos <- yf_get(tickers = nome_acao, first_date = data_ini, last_date = data_fi
 retornos <- as.data.frame(list(precos$ret_adjusted_prices[-1], precos$ref_date[-1]))
 colnames(retornos) <- c("retornos","data")
 
-spec <- ugarchspec(mean.model = list(armaOrder = c(3, 3), include.mean = FALSE),
+spec <- ugarchspec(mean.model = list(armaOrder = c(2, 1), include.mean = FALSE),
                    variance.model = list(model = 'sGARCH', garchOrder = c(1, 1)),
                    distribution = 'std')
-
-#acf((fit4@fit$residuals/fit4@fit$sigma)^2)
 
 previsao_antes <- read.csv("https://raw.githubusercontent.com/Joao-Formigari/Teste/master/data/previsao.csv")
 
