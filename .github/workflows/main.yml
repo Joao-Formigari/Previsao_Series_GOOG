@@ -1,9 +1,9 @@
 name: Previsão de fechamento
 
-on:
-  schedule:
-    - cron: "30 21 27,28,29,30,3,4,5 * *" # Every hour
-    #workflow_dispatch
+#on:
+  #schedule:
+    #- cron: "30 21 27,28,29,30,3,4,5 * *" # Every hour
+    workflow_dispatch
     
 jobs:
   scrape:
